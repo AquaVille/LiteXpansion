@@ -2,6 +2,7 @@ package dev.j3fftw.litexpansion.uumatter;
 
 import dev.j3fftw.litexpansion.Items;
 import dev.j3fftw.litexpansion.LiteXpansion;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.FlexItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -12,6 +13,7 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
+import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
@@ -30,9 +32,9 @@ public final class UuMatterCategory extends FlexItemGroup {
 
     private UuMatterCategory() {
         super(new NamespacedKey(LiteXpansion.getInstance(), "uumatter_category"),
-            new CustomItemStack(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
-                "54d39df0f813b7424406462854eb7249f8c76d80ce56f3af410e35a287062589")),
-                "&5UU-Matter Recipes")
+            new SlimefunItemStack("UUMATTER_CATEGORY",SlimefunUtils.getCustomHead(
+                "54d39df0f813b7424406462854eb7249f8c76d80ce56f3af410e35a287062589"),
+                "&5UU-Matter Recipes").item()
         );
     }
 
@@ -51,8 +53,8 @@ public final class UuMatterCategory extends FlexItemGroup {
             // Header and back button
             for (int i = 0; i < 9; i++) {
                 if (i == 1) {
-                    menu.addItem(i, new CustomItemStack(ChestMenuUtils.getBackButton(p, "",
-                        ChatColor.GRAY + Slimefun.getLocalization().getMessage(p, "guide.back.guide")))
+                    menu.addItem(i, new SlimefunItemStack("GUI_BUTTON_BACK",ChestMenuUtils.getBackButton(p, "",
+                        ChatColor.GRAY + Slimefun.getLocalization().getMessage(p, "guide.back.guide"))).item()
                     );
                     menu.addMenuClickHandler(i, (pl, s, is, action) -> {
                         open(p, profile, mode);
@@ -96,7 +98,7 @@ public final class UuMatterCategory extends FlexItemGroup {
     private boolean onIngredientClick(PlayerProfile profile, ItemStack clickedItem) {
         if (clickedItem != null) {
             // This must be UU Matter then.
-            SlimefunGuide.displayItem(profile, Items.UU_MATTER, true);
+            SlimefunGuide.displayItem(profile, Items.UU_MATTER.item(), true);
         }
 
         return false;
@@ -120,8 +122,8 @@ public final class UuMatterCategory extends FlexItemGroup {
 
         menu.setEmptySlotsClickable(false);
 
-        menu.addItem(1, new CustomItemStack(ChestMenuUtils.getBackButton(player, "",
-                ChatColor.GRAY + Slimefun.getLocalization().getMessage(player, "guide.back.guide"))),
+        menu.addItem(1, new SlimefunItemStack("GUI_BUTTON_BACK",ChestMenuUtils.getBackButton(player, "",
+                ChatColor.GRAY + Slimefun.getLocalization().getMessage(player, "guide.back.guide"))).item(),
             (pl, slot, item, action) -> {
                 SlimefunGuide.openMainMenu(playerProfile, slimefunGuideLayout, 1);
                 return false;

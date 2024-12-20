@@ -14,10 +14,13 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
+import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
+
+import java.util.List;
 
 public final class Items {
 
@@ -26,10 +29,10 @@ public final class Items {
         new NamespacedKey(LiteXpansion.getInstance(),
             "litexpansion"
         ),
-        new CustomItemStack(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
-            "3f87fc5cbb233743a82fb0fa51fe739487f29bcc01c9026621ecefad197f4fb1")),
+        new SlimefunItemStack("LITEXPANSION",SlimefunUtils.getCustomHead(
+            "3f87fc5cbb233743a82fb0fa51fe739487f29bcc01c9026621ecefad197f4fb1"),
             "&7LiteXpansion"
-        )
+        ).item()
     );
 
     public static final SlimefunItemStack ELECTRIC_CHESTPLATE = new SlimefunItemStack(
@@ -64,22 +67,29 @@ public final class Items {
         "GLASS_CUTTER",
         Material.GHAST_TEAR,
         "&bGlass Cutter",
-        "",
-        "&7> &eLeft Click &7- Cut glass quickly",
-        "&7> &eRight Click &7- Cut glass slowly",
-        "",
-        "&c&o&8\u21E8 &e\u26A1 &70 / 300 J"
-    );
+            meta -> {
+                meta.setEnchantmentGlintOverride(true);
+                meta.setLore(List.of(
+                        "",
+                        "&7> &eLeft Click &7- Cut glass quickly",
+                        "&7> &eRight Click &7- Cut glass slowly",
+                        "",
+                        "&c&o&8\u21E8 &e\u26A1 &70 / 300 J"));
+            });
     public static final SlimefunItemStack MINING_DRILL = new SlimefunItemStack(
         "MINING_DRILL",
         Material.IRON_SHOVEL,
         "&7Mining Drill",
-        "",
-        "&7Instantly breaks stone and stone variants",
-        "&7Right click to break block slower",
-        "",
-        "&c&o&8\u21E8 &e\u26A1 &70 / 1000 J"
-    );
+            meta -> {
+                meta.setEnchantmentGlintOverride(true);
+                meta.setLore(List.of(
+                        "",
+                        "&7Instantly breaks obsidian, stone, and stone variants",
+                        "&7Right click to break block slower",
+                        "",
+                        "&c&o&8\u21E8 &e\u26A1 &70 / 1000 J"
+                ));
+            });
     public static final SlimefunItemStack DIAMOND_DRILL = new SlimefunItemStack(
         "DIAMOND_DRILL",
         Material.DIAMOND_SHOVEL,
@@ -154,10 +164,10 @@ public final class Items {
 
     public static final SlimefunItemStack THORIUM = new SlimefunItemStack(
         "THORIUM",
-        new CustomItemStack(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
-            "b87403257c0eaa518cf186deccde137d476556ccff146d503fb2e73956582f37")),
+        new SlimefunItemStack("THORIUM",SlimefunUtils.getCustomHead(
+            "b87403257c0eaa518cf186deccde137d476556ccff146d503fb2e73956582f37"),
             "Thorium"
-        ),
+        ).item(),
         "&8Thorium",
         "",
         LoreBuilder.radioactive(Radioactivity.HIGH),
@@ -228,7 +238,10 @@ public final class Items {
     public static final SlimefunItemStack ADVANCED_CIRCUIT = new SlimefunItemStack(
         "ADVANCED_CIRCUIT",
         Material.COBWEB,
-        "&7Advanced Circuit"
+        "&7Advanced Circuit",
+            meta -> {
+                meta.setEnchantmentGlintOverride(true);
+            }
     );
     //endregion
 
@@ -272,7 +285,10 @@ public final class Items {
     public static final SlimefunItemStack LAPOTRON_CRYSTAL = new SlimefunItemStack(
         "LAPOTRON_CRYSTAL",
         Material.DIAMOND,
-        "&7Lapotron Crystal"
+        "&7Lapotron Crystal",
+            meta -> {
+                meta.setEnchantmentGlintOverride(true);
+            }
     );
     public static final SlimefunItemStack REINFORCED_STONE = new SlimefunItemStack(
         "REINFORCED_STONE",
@@ -443,26 +459,36 @@ public final class Items {
     public static final SlimefunItemStack ADVANCEDLX_SOLAR_HELMET = new SlimefunItemStack(
         "ADVANCEDLX_SOLAR_HELMET",
         Material.DIAMOND_HELMET,
-        "&7Super Advanced Solar Helmet"
+        "&7Super Advanced Solar Helmet",
+            meta -> {
+                meta.setEnchantmentGlintOverride(true);
+            }
     );
 
     public static final SlimefunItemStack HYBRID_SOLAR_HELMET = new SlimefunItemStack(
         "HYBRID_SOLAR_HELMET",
         Material.DIAMOND_HELMET,
-        "&7Hybrid Solar Helmet"
+        "&7Hybrid Solar Helmet",
+            meta -> {
+                meta.setEnchantmentGlintOverride(true);
+            }
     );
 
     public static final SlimefunItemStack ULTIMATE_SOLAR_HELMET = new SlimefunItemStack(
         "ULTIMATE_SOLAR_HELMET",
         Material.DIAMOND_HELMET,
-        "&7Ultimate Solar Helmet"
+        "&7Ultimate Solar Helmet",
+            meta -> {
+                meta.setEnchantmentGlintOverride(true);
+            }
     );
 
     public static final SlimefunItemStack FOOD_SYNTHESIZER = new SlimefunItemStack(
         "FOOD_SYNTHESIZER",
-        new CustomItemStack(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
-            "a967efe969d264f635f2c201c34381ef59c72e16ec50af7692033121e22fba9c")),
-            "Food Synthesizer"),
+        new SlimefunItemStack("FOOD_SYNTHESIZER",SlimefunUtils.getCustomHead(
+                "a967efe969d264f635f2c201c34381ef59c72e16ec50af7692033121e22fba9c"
+            ),
+            "Food Synthesizer").item(),
         "&dFood Synthesizer",
         "",
         "&fKeeps you fed with artificial food.",
@@ -551,23 +577,14 @@ public final class Items {
         "&7Converter"
     );
 
-    private static final Enchantment glowEnchant = Enchantment.getByKey(Constants.GLOW_ENCHANT);
 
     static {
-        ADVANCED_SOLAR_HELMET.addEnchantment(Enchantment.DURABILITY, 1);
-        CARBONADO_SOLAR_HELMET.addEnchantment(Enchantment.DURABILITY, 2);
-        ENERGIZED_SOLAR_HELMET.addEnchantment(Enchantment.DURABILITY, 3);
-        ADVANCEDLX_SOLAR_HELMET.addUnsafeEnchantment(Enchantment.DURABILITY, 4);
-        HYBRID_SOLAR_HELMET.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
-        ULTIMATE_SOLAR_HELMET.addUnsafeEnchantment(Enchantment.DURABILITY, 6);
-        ADVANCED_CIRCUIT.addEnchantment(glowEnchant, 1);
-        GLASS_CUTTER.addEnchantment(glowEnchant, 1);
-
-        DIAMOND_DRILL.addEnchantment(glowEnchant, 1);
-        LAPOTRON_CRYSTAL.addEnchantment(glowEnchant, 1);
-        ADVANCEDLX_SOLAR_HELMET.addEnchantment(glowEnchant, 1);
-        HYBRID_SOLAR_HELMET.addEnchantment(glowEnchant, 1);
-        ULTIMATE_SOLAR_HELMET.addEnchantment(glowEnchant, 1);
+        ADVANCED_SOLAR_HELMET.addEnchantment(Enchantment.UNBREAKING, 1);
+        CARBONADO_SOLAR_HELMET.addEnchantment(Enchantment.UNBREAKING, 2);
+        ENERGIZED_SOLAR_HELMET.addEnchantment(Enchantment.UNBREAKING, 3);
+        ADVANCEDLX_SOLAR_HELMET.addUnsafeEnchantment(Enchantment.UNBREAKING, 4);
+        HYBRID_SOLAR_HELMET.addUnsafeEnchantment(Enchantment.UNBREAKING, 5);
+        ULTIMATE_SOLAR_HELMET.addUnsafeEnchantment(Enchantment.UNBREAKING, 6);
     }
 
     private Items() {}

@@ -2,6 +2,7 @@ package dev.j3fftw.litexpansion.utils;
 
 import dev.j3fftw.extrautils.utils.Utils;
 import dev.j3fftw.litexpansion.machine.UUCrafter;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
@@ -51,10 +52,11 @@ public class BlockMenuPresetTest extends BlockMenuPreset {
         Utils.putOutputSlot(this, UUCrafter.OUTPUT_SLOT);
 
         addItem(UUCrafter.START_STOP,
-            new CustomItemStack(
+            new SlimefunItemStack(
+                    "START_STOP",
                 Material.RED_STAINED_GLASS_PANE,
                 "&7Click to start"
-            )
+            ).item()
         );
     }
 

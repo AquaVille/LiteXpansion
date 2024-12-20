@@ -1,6 +1,7 @@
 package dev.j3fftw.litexpansion.items;
 
 import dev.j3fftw.litexpansion.Items;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactive;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
@@ -13,8 +14,8 @@ import javax.annotation.Nonnull;
 
 public class Thorium extends UnplaceableBlock implements Radioactive {
 
-    private static final ItemStack thorium = new CustomItemStack(Material.PAPER, "&fHint!",
-        "&a&oMake sure to first GEO-Scan the chunk in which you are", "&a&omining to discover Thorium!");
+    private static final ItemStack thorium = new SlimefunItemStack("THORIUM",Material.PAPER, "&fHint!",
+        "&a&oMake sure to first GEO-Scan the chunk in which you are", "&a&omining to discover Thorium!").item();
 
     public Thorium() {
         super(Items.LITEXPANSION, Items.THORIUM, RecipeType.GEO_MINER, new ItemStack[] {

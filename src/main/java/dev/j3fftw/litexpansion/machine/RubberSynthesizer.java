@@ -3,6 +3,7 @@ package dev.j3fftw.litexpansion.machine;
 import dev.j3fftw.litexpansion.Items;
 import dev.j3fftw.litexpansion.LiteXpansion;
 import dev.j3fftw.litexpansion.machine.api.PoweredMachine;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
@@ -29,16 +30,16 @@ public class RubberSynthesizer extends AContainer implements RecipeDisplayItem, 
     public RubberSynthesizer() {
         super(Items.LITEXPANSION, Items.RUBBER_SYNTHESIZER_MACHINE, RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
-                SlimefunItems.REINFORCED_PLATE, SlimefunItems.MEDIUM_CAPACITOR, SlimefunItems.REINFORCED_PLATE,
-                new ItemStack(Material.PISTON), Items.MACHINE_BLOCK, new ItemStack(Material.PISTON),
-                SlimefunItems.REINFORCED_PLATE, new ItemStack(Material.FLINT_AND_STEEL), SlimefunItems.REINFORCED_PLATE
+                SlimefunItems.REINFORCED_PLATE.item(), SlimefunItems.MEDIUM_CAPACITOR.item(), SlimefunItems.REINFORCED_PLATE.item(),
+                new ItemStack(Material.PISTON), Items.MACHINE_BLOCK.item(), new ItemStack(Material.PISTON),
+                SlimefunItems.REINFORCED_PLATE.item(), new ItemStack(Material.FLINT_AND_STEEL), SlimefunItems.REINFORCED_PLATE.item()
             });
     }
 
     @Override
     protected void registerDefaultRecipes() {
-        registerRecipe(13, new ItemStack[] {new CustomItemStack(SlimefunItems.OIL_BUCKET)},
-            new ItemStack[] {new CustomItemStack(Items.RUBBER, 8), new ItemStack(Material.BUCKET)});
+        registerRecipe(13, new ItemStack[] {SlimefunItems.OIL_BUCKET.item()},
+            new ItemStack[] {Items.RUBBER.asQuantity(8), new ItemStack(Material.BUCKET)});
     }
 
     @Nonnull

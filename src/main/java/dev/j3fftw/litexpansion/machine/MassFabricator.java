@@ -6,6 +6,7 @@ import dev.j3fftw.litexpansion.Items;
 import dev.j3fftw.litexpansion.LiteXpansion;
 import dev.j3fftw.litexpansion.machine.api.PoweredMachine;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
@@ -44,15 +45,15 @@ public class MassFabricator extends SlimefunItem implements InventoryBlock, Ener
 
     private static final Map<BlockPosition, Integer> progress = new HashMap<>();
 
-    private static final CustomItemStack progressItem = new CustomItemStack(Items.UU_MATTER.getType(), "&7Progress");
+    private static final SlimefunItemStack progressItem = new SlimefunItemStack("PROGRESS_ITEM",Items.UU_MATTER.getType(), "&7Progress");
 
-    private static final ItemStack plate = SlimefunItems.REINFORCED_PLATE;
-    private static final ItemStack circuitBoard = SlimefunItems.ADVANCED_CIRCUIT_BOARD;
+    private static final ItemStack plate = SlimefunItems.REINFORCED_PLATE.item();
+    private static final ItemStack circuitBoard = SlimefunItems.ADVANCED_CIRCUIT_BOARD.item();
 
     public MassFabricator() {
         super(Items.LITEXPANSION, Items.MASS_FABRICATOR_MACHINE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
             plate, circuitBoard, plate,
-            circuitBoard, Items.MACHINE_BLOCK, circuitBoard,
+            circuitBoard, Items.MACHINE_BLOCK.item(), circuitBoard,
             plate, circuitBoard, plate
         });
         setupInv();
@@ -77,7 +78,7 @@ public class MassFabricator extends SlimefunItem implements InventoryBlock, Ener
                 blockMenuPreset.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
             }
             Utils.putOutputSlot(blockMenuPreset, OUTPUT_SLOT);
-            blockMenuPreset.addItem(PROGRESS_SLOT, progressItem);
+            blockMenuPreset.addItem(PROGRESS_SLOT, progressItem.item());
             blockMenuPreset.addMenuClickHandler(PROGRESS_SLOT, ChestMenuUtils.getEmptyClickHandler());
         });
     }
@@ -136,15 +137,15 @@ public class MassFabricator extends SlimefunItem implements InventoryBlock, Ener
                 inv.consumeItem(INPUT_SLOTS[1]);
             progress.put(pos, ++currentProgress);
             ChestMenuUtils.updateProgressbar(inv, PROGRESS_SLOT, PROGRESS_AMOUNT - currentProgress,
-                PROGRESS_AMOUNT, progressItem);
+                PROGRESS_AMOUNT, progressItem.item());
         } else {
             if (output != null && output.getAmount() > 0) {
                 output.setAmount(output.getAmount() + 1);
             } else {
-                inv.replaceExistingItem(OUTPUT_SLOT, Items.UU_MATTER.clone());
+                inv.replaceExistingItem(OUTPUT_SLOT, Items.UU_MATTER.item());
             }
             progress.remove(pos);
-            ChestMenuUtils.updateProgressbar(inv, PROGRESS_SLOT, PROGRESS_AMOUNT, PROGRESS_AMOUNT, progressItem);
+            ChestMenuUtils.updateProgressbar(inv, PROGRESS_SLOT, PROGRESS_AMOUNT, PROGRESS_AMOUNT, progressItem.item());
         }
     }
 

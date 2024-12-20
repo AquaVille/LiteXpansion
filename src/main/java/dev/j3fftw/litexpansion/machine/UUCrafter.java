@@ -7,6 +7,7 @@ import dev.j3fftw.litexpansion.machine.api.PoweredMachine;
 import dev.j3fftw.litexpansion.utils.BlockMenuPresetTest;
 import dev.j3fftw.litexpansion.uumatter.UUMatter;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
@@ -38,11 +39,11 @@ public class UUCrafter extends SlimefunItem implements InventoryBlock, EnergyNet
     public static final int OUTPUT_SLOT = 25;
     public static final int[] CRAFTING_SLOTS = {12, 13, 14, 21, 22, 23, 30, 31, 32};
     public static final int START_STOP = 40;
-    public static final CustomItemStack RUNNING = new CustomItemStack(
+    public static final SlimefunItemStack RUNNING = new SlimefunItemStack("RUNNING",
         Material.GREEN_STAINED_GLASS_PANE, ChatColor.GRAY + "Click to stop"
     );
 
-    public static final CustomItemStack NOT_RUNNING = new CustomItemStack(
+    public static final SlimefunItemStack NOT_RUNNING = new SlimefunItemStack("NOT_RUNNING",
         Material.RED_STAINED_GLASS_PANE, ChatColor.GRAY + "Click to start"
     );
 
@@ -50,9 +51,9 @@ public class UUCrafter extends SlimefunItem implements InventoryBlock, EnergyNet
 
     public UUCrafter() {
         super(Items.LITEXPANSION, Items.UU_CRAFTER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-            Items.UU_MATTER, new ItemStack(Material.CRAFTING_TABLE), Items.UU_MATTER,
-            Items.CARGO_CONFIGURATOR, Items.ADVANCED_MACHINE_BLOCK, Items.GLASS_CUTTER,
-            Items.UU_MATTER, Items.UU_MATTER, Items.UU_MATTER
+            Items.UU_MATTER.item(), new ItemStack(Material.CRAFTING_TABLE), Items.UU_MATTER.item(),
+            Items.CARGO_CONFIGURATOR.item(), Items.ADVANCED_MACHINE_BLOCK.item(), Items.GLASS_CUTTER.item(),
+            Items.UU_MATTER.item(), Items.UU_MATTER.item(), Items.UU_MATTER.item()
         });
         setup();
         this.addItemHandler(
@@ -144,7 +145,7 @@ public class UUCrafter extends SlimefunItem implements InventoryBlock, EnergyNet
 
         whatIsRunning.put(block.getLocation(), isRunning);
 
-        menu.replaceExistingItem(START_STOP, isRunning ? RUNNING : NOT_RUNNING);
+        menu.replaceExistingItem(START_STOP, isRunning ? RUNNING.item() : NOT_RUNNING.item());
         menu.addMenuClickHandler(START_STOP, (p, slot, item, action) -> {
             toggleRunning(menu, block);
             return false;
@@ -155,7 +156,7 @@ public class UUCrafter extends SlimefunItem implements InventoryBlock, EnergyNet
         boolean setTo = !whatIsRunning.get(block.getLocation());
         BlockStorage.addBlockInfo(block, "RUNNING", String.valueOf(setTo));
         whatIsRunning.put(block.getLocation(), setTo);
-        ItemStack itemStack = setTo ? RUNNING : NOT_RUNNING;
+        ItemStack itemStack = setTo ? RUNNING.item() : NOT_RUNNING.item();
         blockMenu.replaceExistingItem(START_STOP, itemStack);
     }
 
