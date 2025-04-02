@@ -30,7 +30,7 @@
         <dependency>
             <groupId>com.github.Slimefun</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>1aeb0e8</version>
+            <version>4.9</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/Slimefun v4.9-UNOFFICIAL.jar</systemPath>
         </dependency>
