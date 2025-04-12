@@ -39,7 +39,7 @@ public abstract class CraftingMultiBlock extends MultiBlockMachine {
 
         for (int j = 0; j < inv.getContents().length; j++) {
             ItemStack stack = inv.getContents()[j] != null && inv.getContents()[j].getAmount() > 1 ?
-                new SlimefunItemStack("INV_SLOT",inv.getContents()[j]).asQuantity(inv.getContents()[j].getAmount() - 1) : null;
+                    CustomItemStack.create(inv.getContents()[j], inv.getContents()[j].getAmount() - 1) : null;
             fakeInv.setItem(j, stack);
         }
 

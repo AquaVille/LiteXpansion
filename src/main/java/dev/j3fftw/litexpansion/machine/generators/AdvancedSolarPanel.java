@@ -42,8 +42,8 @@ public class AdvancedSolarPanel extends SlimefunItem implements InventoryBlock, 
     public static final int ULTIMATE_OUTPUT = 5120;
     public static final int ULTIMATE_STORAGE = 10_000_000;
     private static final int PROGRESS_SLOT = 4;
-    private static final SlimefunItemStack generatingItem = new SlimefunItemStack("GENERATING_ITEM",Material.ORANGE_STAINED_GLASS_PANE,
-        "&cNot Generating..."
+    private static final ItemStack generatingItem = CustomItemStack.create(Material.ORANGE_STAINED_GLASS_PANE,
+            "&cNot Generating..."
     );
     private final Type type;
 
@@ -56,7 +56,7 @@ public class AdvancedSolarPanel extends SlimefunItem implements InventoryBlock, 
                 for (int i = 0; i < 9; i++) {
                     blockMenuPreset.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
                 }
-                blockMenuPreset.addItem(PROGRESS_SLOT, generatingItem.item());
+                blockMenuPreset.addItem(PROGRESS_SLOT, generatingItem);
             });
     }
 

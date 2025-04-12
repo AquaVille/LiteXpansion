@@ -6,7 +6,6 @@ import dev.j3fftw.litexpansion.Items;
 import dev.j3fftw.litexpansion.LiteXpansion;
 import dev.j3fftw.litexpansion.machine.api.PoweredMachine;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
@@ -33,7 +32,7 @@ import java.util.Map;
 public class MassFabricator extends SlimefunItem implements InventoryBlock, EnergyNetComponent, PoweredMachine {
 
     public static final RecipeType RECIPE_TYPE = new RecipeType(
-        new NamespacedKey(LiteXpansion.getInstance(), "mass_fabricator"), Items.MASS_FABRICATOR_MACHINE
+            new NamespacedKey(LiteXpansion.getInstance(), "mass_fabricator"), Items.MASS_FABRICATOR_MACHINE
     );
 
     public static final int ENERGY_CONSUMPTION = 16_666;
@@ -45,29 +44,29 @@ public class MassFabricator extends SlimefunItem implements InventoryBlock, Ener
 
     private static final Map<BlockPosition, Integer> progress = new HashMap<>();
 
-    private static final SlimefunItemStack progressItem = new SlimefunItemStack("PROGRESS_ITEM",Items.UU_MATTER.getType(), "&7Progress");
+    private static final ItemStack progressItem = CustomItemStack.create(Items.UU_MATTER.item(), "&7Progress");
 
     private static final ItemStack plate = SlimefunItems.REINFORCED_PLATE.item();
     private static final ItemStack circuitBoard = SlimefunItems.ADVANCED_CIRCUIT_BOARD.item();
 
     public MassFabricator() {
         super(Items.LITEXPANSION, Items.MASS_FABRICATOR_MACHINE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-            plate, circuitBoard, plate,
-            circuitBoard, Items.MACHINE_BLOCK.item(), circuitBoard,
-            plate, circuitBoard, plate
+                plate, circuitBoard, plate,
+                circuitBoard, Items.MACHINE_BLOCK.item(), circuitBoard,
+                plate, circuitBoard, plate
         });
         setupInv();
         this.addItemHandler(
-            new BlockBreakHandler(false, false) {
-                @Override
-                public void onPlayerBreak(BlockBreakEvent event, ItemStack item, List<ItemStack> drops) {
-                    BlockMenu blockMenu = BlockStorage.getInventory(event.getBlock());
-                    if (blockMenu != null) {
-                        blockMenu.dropItems(blockMenu.getLocation(), INPUT_SLOTS);
-                        blockMenu.dropItems(blockMenu.getLocation(), OUTPUT_SLOT);
+                new BlockBreakHandler(false, false) {
+                    @Override
+                    public void onPlayerBreak(BlockBreakEvent event, ItemStack item, List<ItemStack> drops) {
+                        BlockMenu blockMenu = BlockStorage.getInventory(event.getBlock());
+                        if (blockMenu != null) {
+                            blockMenu.dropItems(blockMenu.getLocation(), INPUT_SLOTS);
+                            blockMenu.dropItems(blockMenu.getLocation(), OUTPUT_SLOT);
+                        }
                     }
                 }
-            }
         );
     }
 
@@ -78,7 +77,7 @@ public class MassFabricator extends SlimefunItem implements InventoryBlock, Ener
                 blockMenuPreset.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
             }
             Utils.putOutputSlot(blockMenuPreset, OUTPUT_SLOT);
-            blockMenuPreset.addItem(PROGRESS_SLOT, progressItem.item());
+            blockMenuPreset.addItem(PROGRESS_SLOT, progressItem);
             blockMenuPreset.addMenuClickHandler(PROGRESS_SLOT, ChestMenuUtils.getEmptyClickHandler());
         });
     }
@@ -107,8 +106,8 @@ public class MassFabricator extends SlimefunItem implements InventoryBlock, Ener
         @Nullable ItemStack input2 = inv.getItemInSlot(INPUT_SLOTS[1]);
         @Nullable final ItemStack output = inv.getItemInSlot(OUTPUT_SLOT);
         if (output != null && (output.getType() != Items.UU_MATTER.getType()
-            || output.getAmount() == output.getMaxStackSize()
-            || !Items.UU_MATTER.getItem().isItem(output))) {
+                || output.getAmount() == output.getMaxStackSize()
+                || !Items.UU_MATTER.getItem().isItem(output))) {
             return;
         }
 
@@ -137,15 +136,15 @@ public class MassFabricator extends SlimefunItem implements InventoryBlock, Ener
                 inv.consumeItem(INPUT_SLOTS[1]);
             progress.put(pos, ++currentProgress);
             ChestMenuUtils.updateProgressbar(inv, PROGRESS_SLOT, PROGRESS_AMOUNT - currentProgress,
-                PROGRESS_AMOUNT, progressItem.item());
+                    PROGRESS_AMOUNT, progressItem);
         } else {
             if (output != null && output.getAmount() > 0) {
                 output.setAmount(output.getAmount() + 1);
             } else {
-                inv.replaceExistingItem(OUTPUT_SLOT, Items.UU_MATTER.item());
+                inv.replaceExistingItem(OUTPUT_SLOT, Items.UU_MATTER.item().clone());
             }
             progress.remove(pos);
-            ChestMenuUtils.updateProgressbar(inv, PROGRESS_SLOT, PROGRESS_AMOUNT, PROGRESS_AMOUNT, progressItem.item());
+            ChestMenuUtils.updateProgressbar(inv, PROGRESS_SLOT, PROGRESS_AMOUNT, PROGRESS_AMOUNT, progressItem);
         }
     }
 

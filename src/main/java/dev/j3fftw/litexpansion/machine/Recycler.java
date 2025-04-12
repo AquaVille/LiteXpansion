@@ -6,7 +6,6 @@ import dev.j3fftw.litexpansion.Items;
 import dev.j3fftw.litexpansion.LiteXpansion;
 import dev.j3fftw.litexpansion.machine.api.PoweredMachine;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
@@ -34,7 +33,7 @@ import java.util.Map;
 public class Recycler extends SlimefunItem implements InventoryBlock, EnergyNetComponent, PoweredMachine {
 
     public static final RecipeType RECIPE_TYPE = new RecipeType(
-        new NamespacedKey(LiteXpansion.getInstance(), "scrap_machine"), Items.RECYCLER
+            new NamespacedKey(LiteXpansion.getInstance(), "scrap_machine"), Items.RECYCLER
     );
 
     public static final int ENERGY_CONSUMPTION = 200;
@@ -46,25 +45,25 @@ public class Recycler extends SlimefunItem implements InventoryBlock, EnergyNetC
 
     private static final Map<BlockPosition, Integer> progress = new HashMap<>();
 
-    private static final SlimefunItemStack progressItem = new SlimefunItemStack("PROGRESS_ITEM",Material.DEAD_BUSH, "&7Progress");
+    private static final ItemStack progressItem = CustomItemStack.create(Material.DEAD_BUSH, "&7Progress");
 
     public Recycler() {
         super(Items.LITEXPANSION, Items.RECYCLER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-            SlimefunItems.ADVANCED_CIRCUIT_BOARD.item(), SlimefunItems.REINFORCED_PLATE.item(), SlimefunItems.ADVANCED_CIRCUIT_BOARD.item(),
-            SlimefunItems.REINFORCED_PLATE.item(), Items.MACHINE_BLOCK.item(), SlimefunItems.REINFORCED_PLATE.item(),
-            SlimefunItems.ADVANCED_CIRCUIT_BOARD.item(), SlimefunItems.REINFORCED_PLATE.item(), SlimefunItems.ADVANCED_CIRCUIT_BOARD.item()
+                SlimefunItems.ADVANCED_CIRCUIT_BOARD.item(), SlimefunItems.REINFORCED_PLATE.item(), SlimefunItems.ADVANCED_CIRCUIT_BOARD.item(),
+                SlimefunItems.REINFORCED_PLATE.item(), Items.MACHINE_BLOCK.item(), SlimefunItems.REINFORCED_PLATE.item(),
+                SlimefunItems.ADVANCED_CIRCUIT_BOARD.item(), SlimefunItems.REINFORCED_PLATE.item(), SlimefunItems.ADVANCED_CIRCUIT_BOARD.item()
         });
         setupInv();
         this.addItemHandler(
-            new BlockBreakHandler(false, false) {
-                @Override
-                public void onPlayerBreak(BlockBreakEvent event, ItemStack item, List<ItemStack> drops) {
-                    BlockMenu blockMenu = BlockStorage.getInventory(event.getBlock());
-                    if (blockMenu != null) {
-                        blockMenu.dropItems(blockMenu.getLocation(), INPUT_SLOT, OUTPUT_SLOT);
+                new BlockBreakHandler(false, false) {
+                    @Override
+                    public void onPlayerBreak(BlockBreakEvent event, ItemStack item, List<ItemStack> drops) {
+                        BlockMenu blockMenu = BlockStorage.getInventory(event.getBlock());
+                        if (blockMenu != null) {
+                            blockMenu.dropItems(blockMenu.getLocation(), INPUT_SLOT, OUTPUT_SLOT);
+                        }
                     }
                 }
-            }
         );
     }
 
@@ -75,7 +74,7 @@ public class Recycler extends SlimefunItem implements InventoryBlock, EnergyNetC
                 blockMenuPreset.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
             }
             Utils.putOutputSlot(blockMenuPreset, OUTPUT_SLOT);
-            blockMenuPreset.addItem(PROGRESS_SLOT, progressItem.item());
+            blockMenuPreset.addItem(PROGRESS_SLOT, CustomItemStack.create(Material.DEAD_BUSH, "&7Progress"));
             blockMenuPreset.addMenuClickHandler(PROGRESS_SLOT, ChestMenuUtils.getEmptyClickHandler());
         });
     }
@@ -102,10 +101,10 @@ public class Recycler extends SlimefunItem implements InventoryBlock, EnergyNetC
         @Nullable final ItemStack input = inv.getItemInSlot(INPUT_SLOT);
         @Nullable final ItemStack output = inv.getItemInSlot(OUTPUT_SLOT);
         if (input == null || input.getType() == Material.AIR
-            || (output != null
-            && (output.getType() != Items.SCRAP.getType()
-            || output.getAmount() == output.getMaxStackSize()
-            || !Items.SCRAP.getItem().isItem(output)))
+                || (output != null
+                && (output.getType() != Items.SCRAP.getType()
+                || output.getAmount() == output.getMaxStackSize()
+                || !Items.SCRAP.getItem().isItem(output)))
         ) {
             return;
         }
@@ -129,14 +128,14 @@ public class Recycler extends SlimefunItem implements InventoryBlock, EnergyNetC
             if (output != null && output.getAmount() > 0) {
                 output.setAmount(output.getAmount() + 1);
             } else {
-                inv.replaceExistingItem(OUTPUT_SLOT, Items.SCRAP.item());
+                inv.replaceExistingItem(OUTPUT_SLOT, Items.SCRAP.item().clone());
             }
             progress.remove(pos);
-            ChestMenuUtils.updateProgressbar(inv, PROGRESS_SLOT, PROGRESS_AMOUNT, PROGRESS_AMOUNT, progressItem.item());
+            ChestMenuUtils.updateProgressbar(inv, PROGRESS_SLOT, PROGRESS_AMOUNT, PROGRESS_AMOUNT, progressItem);
         } else {
             progress.put(pos, ++currentProgress);
             ChestMenuUtils.updateProgressbar(inv, PROGRESS_SLOT, PROGRESS_AMOUNT - currentProgress, PROGRESS_AMOUNT,
-                progressItem.item());
+                    progressItem);
         }
     }
 

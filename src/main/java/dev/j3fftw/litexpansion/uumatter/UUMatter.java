@@ -118,7 +118,7 @@ public final class UUMatter {
     }
 
     public void addUuMatterRecipe(@Nonnull SlimefunItemStack item, int amount, @Nonnull ItemStack[] recipe) {
-        final ItemStack clone = item.item();
+        final ItemStack clone = item.item().clone();
         clone.setAmount(amount);
         this.addUuMatterRecipe(clone, recipe);
     }

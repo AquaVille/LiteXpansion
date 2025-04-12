@@ -14,8 +14,8 @@ import javax.annotation.Nonnull;
 
 public class Thorium extends UnplaceableBlock implements Radioactive {
 
-    private static final ItemStack thorium = new SlimefunItemStack("THORIUM",Material.PAPER, "&fHint!",
-        "&a&oMake sure to first GEO-Scan the chunk in which you are", "&a&omining to discover Thorium!").item();
+    private static final ItemStack thorium = CustomItemStack.create(Material.PAPER, "&fHint!",
+            "&a&oMake sure to first GEO-Scan the chunk in which you are", "&a&omining to discover Thorium!");
 
     public Thorium() {
         super(Items.LITEXPANSION, Items.THORIUM, RecipeType.GEO_MINER, new ItemStack[] {
