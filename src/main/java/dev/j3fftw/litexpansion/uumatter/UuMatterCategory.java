@@ -2,6 +2,8 @@ package dev.j3fftw.litexpansion.uumatter;
 
 import dev.j3fftw.litexpansion.Items;
 import dev.j3fftw.litexpansion.LiteXpansion;
+import io.github.bakedlibs.dough.skins.PlayerHead;
+import io.github.bakedlibs.dough.skins.PlayerSkin;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.FlexItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -9,8 +11,6 @@ import io.github.thebusybiscuit.slimefun4.core.guide.SlimefunGuide;
 import io.github.thebusybiscuit.slimefun4.core.guide.SlimefunGuideMode;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import org.bukkit.ChatColor;
@@ -30,9 +30,9 @@ public final class UuMatterCategory extends FlexItemGroup {
 
     private UuMatterCategory() {
         super(new NamespacedKey(LiteXpansion.getInstance(), "uumatter_category"),
-            CustomItemStack.create(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
-                "54d39df0f813b7424406462854eb7249f8c76d80ce56f3af410e35a287062589")),
-                "&5UU-Matter Recipes")
+                CustomItemStack.create(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
+                                "54d39df0f813b7424406462854eb7249f8c76d80ce56f3af410e35a287062589")),
+                        "&5UU-Matter Recipes")
         );
     }
 

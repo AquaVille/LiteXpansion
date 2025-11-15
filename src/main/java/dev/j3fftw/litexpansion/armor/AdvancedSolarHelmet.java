@@ -26,9 +26,9 @@ public class AdvancedSolarHelmet extends SolarHelmet {
         Items.ADVANCED_SOLAR_HELMET.addEnchantment(Enchantment.UNBREAKING, 1);
         Items.CARBONADO_SOLAR_HELMET.addEnchantment(Enchantment.UNBREAKING, 2);
         Items.ENERGIZED_SOLAR_HELMET.addEnchantment(Enchantment.UNBREAKING, 3);
-        Items.ADVANCEDLX_SOLAR_HELMET.addEnchantment(Enchantment.UNBREAKING, 4);
-        Items.HYBRID_SOLAR_HELMET.addEnchantment(Enchantment.UNBREAKING, 5);
-        Items.ULTIMATE_SOLAR_HELMET.addEnchantment(Enchantment.UNBREAKING, 6);
+        Items.ADVANCEDLX_SOLAR_HELMET.addUnsafeEnchantment(Enchantment.UNBREAKING, 4);
+        Items.HYBRID_SOLAR_HELMET.addUnsafeEnchantment(Enchantment.UNBREAKING, 5);
+        Items.ULTIMATE_SOLAR_HELMET.addUnsafeEnchantment(Enchantment.UNBREAKING, 6);
     }
 
     @Getter

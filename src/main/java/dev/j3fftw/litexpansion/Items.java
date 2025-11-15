@@ -6,18 +6,17 @@ import dev.j3fftw.litexpansion.machine.Recycler;
 import dev.j3fftw.litexpansion.machine.RubberSynthesizer;
 import dev.j3fftw.litexpansion.machine.generators.AdvancedSolarPanel;
 import dev.j3fftw.litexpansion.weapons.NanoBlade;
+import io.github.bakedlibs.dough.skins.PlayerHead;
+import io.github.bakedlibs.dough.skins.PlayerSkin;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
-import java.util.List;
 
 public final class Items {
 
@@ -48,18 +47,13 @@ public final class Items {
         "NANO_BLADE",
         Material.DIAMOND_SWORD,
         "&2Nano Blade &c(Off)",
-        meta -> {
-            meta.setEnchantmentGlintOverride(true);
-            meta.setLore(List.of(
-                "",
-                "&fAn advanced piece of technology which can",
-                "&fcut through organic tissue with ease.",
-                "",
-                "&fToggle: &aRight Click",
-                "",
-                "&c&o&8\u21E8 &e\u26A1 &70 / " + NanoBlade.CAPACITY + " J"
-            ));
-        }
+        "",
+        "&fAn advanced piece of technology which can",
+        "&fcut through organic tissue with ease.",
+        "",
+        "&fToggle: &aRight Click",
+        "",
+        "&c&o&8\u21E8 &e\u26A1 &70 / " + NanoBlade.CAPACITY + " J"
     );
     //endregion
 
@@ -69,16 +63,11 @@ public final class Items {
         "GLASS_CUTTER",
         Material.GHAST_TEAR,
         "&bGlass Cutter",
-        meta -> {
-            meta.setEnchantmentGlintOverride(true);
-            meta.setLore(List.of(
-                "",
-                "&7> &eLeft Click &7- Cut glass quickly",
-                "&7> &eRight Click &7- Cut glass slowly",
-                "",
-                "&c&o&8\u21E8 &e\u26A1 &70 / 300 J"
-            ));
-        }
+        "",
+        "&7> &eLeft Click &7- Cut glass quickly",
+        "&7> &eRight Click &7- Cut glass slowly",
+        "",
+        "&c&o&8\u21E8 &e\u26A1 &70 / 300 J"
     );
     public static final SlimefunItemStack MINING_DRILL = new SlimefunItemStack(
         "MINING_DRILL",
@@ -94,16 +83,11 @@ public final class Items {
         "DIAMOND_DRILL",
         Material.DIAMOND_SHOVEL,
         "&bDiamond Drill",
-        meta -> {
-            meta.setEnchantmentGlintOverride(true);
-            meta.setLore(List.of(
-                "",
-                "&7Instantly breaks obsidian, stone, and stone variants",
-                "&7Right click to break block slower",
-                "",
-                "&c&o&8\u21E8 &e\u26A1 &70 / 1000 J"
-            ));
-        }
+        "",
+        "&7Instantly breaks obsidian, stone, and stone variants",
+        "&7Right click to break block slower",
+        "",
+        "&c&o&8\u21E8 &e\u26A1 &70 / 1000 J"
     );
     public static final SlimefunItemStack TREETAP = new SlimefunItemStack(
         "TREETAP",
