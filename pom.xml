@@ -57,12 +57,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.bstats</groupId>
-            <artifactId>bstats-bukkit</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.github.Slimefun-Addon-Community</groupId>
             <artifactId>extrautils</artifactId>
             <version>73e76ac06c</version>
@@ -118,20 +112,15 @@
 
                 <configuration>
                     <relocations>
-                        <relocation>
-                            <pattern>org.bstats</pattern>
-                            <shadedPattern>dev.j3fftw.litexpansion.bstats</shadedPattern>
-                        </relocation>
-
-                        <relocation>
+                         <relocation>
                             <pattern>dev.j3fftw.extrautils</pattern>
-                            <shadedPattern>dev.j3fftw.litexpansion.extrautils</shadedPattern>
+                            <shadedPattern>dev.j3fftw.litexpansion.libs.extrautils</shadedPattern>
                         </relocation>
 
                         <!-- Temporary fix for Dough skin issue (November 2025) : START -->
                         <relocation>
                             <pattern>io.github.bakedlibs.dough</pattern>
-                            <shadedPattern>dev.j3fftw.litexpansion.dough</shadedPattern>
+                            <shadedPattern>dev.j3fftw.litexpansion.libs.dough</shadedPattern>
                         </relocation>
                         <!-- Temporary fix for Dough skin issue (November 2025) : END -->
                     </relocations>

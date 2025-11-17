@@ -1,7 +1,6 @@
 package dev.j3fftw.litexpansion;
 
 import dev.j3fftw.litexpansion.resources.ThoriumResource;
-import dev.j3fftw.litexpansion.service.MetricsService;
 import dev.j3fftw.litexpansion.ticker.PassiveElectricRemovalTicker;
 import dev.j3fftw.litexpansion.utils.Reflections;
 import dev.j3fftw.litexpansion.uumatter.UUMatter;
@@ -9,8 +8,6 @@ import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.researches.Research;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.BlobBuildUpdater;
-import org.bstats.MetricsBase;
-import org.bstats.bukkit.Metrics;
 import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -21,8 +18,6 @@ public class LiteXpansion extends JavaPlugin implements SlimefunAddon {
 
     private static LiteXpansion instance;
 
-    private final MetricsService metricsService = new MetricsService();
-
     @Override
     public void onEnable() {
         setInstance(this);
@@ -30,9 +25,6 @@ public class LiteXpansion extends JavaPlugin implements SlimefunAddon {
         if (!new File(getDataFolder(), "config.yml").exists()) {
             saveDefaultConfig();
         }
-
-        final Metrics metrics = new Metrics(this, 7111);
-        metricsService.setup(metrics);
 
         if (getConfig().getBoolean("options.auto-update") && getDescription().getVersion().startsWith("DEV - ")) {
             new BlobBuildUpdater(this, getFile(), "LiteXpansion", "Dev").start();
@@ -191,11 +183,6 @@ public class LiteXpansion extends JavaPlugin implements SlimefunAddon {
             .addItems(Items.HYBRID_SOLAR_HELMET.item(), Items.ADVANCED_SOLAR_HELMET.item(), Items.ADVANCEDLX_SOLAR_HELMET.item(),
                 Items.CARBONADO_SOLAR_HELMET.item(), Items.ENERGIZED_SOLAR_HELMET.item(), Items.ULTIMATE_SOLAR_HELMET.item())
             .register();
-    }
-
-    private void forceMetricsPush(@Nonnull Metrics metrics) {
-        MetricsBase base = (MetricsBase) Reflections.getField(Metrics.class, metrics, "metricsBase");
-        Reflections.invoke(MetricsBase.class, base, "submitData");
     }
 
     @Nonnull
