@@ -1,5 +1,6 @@
 package dev.j3fftw.litexpansion.machine.extensions;
 
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
@@ -7,7 +8,6 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.items.backpacks.SlimefunBackpack;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
@@ -39,7 +39,7 @@ public abstract class CraftingMultiBlock extends MultiBlockMachine {
 
         for (int j = 0; j < inv.getContents().length; j++) {
             ItemStack stack = inv.getContents()[j] != null && inv.getContents()[j].getAmount() > 1 ?
-                CustomItemStack.create(inv.getContents()[j], inv.getContents()[j].getAmount() - 1) : null;
+                new CustomItemStack(inv.getContents()[j], inv.getContents()[j].getAmount() - 1) : null;
             fakeInv.setItem(j, stack);
         }
 

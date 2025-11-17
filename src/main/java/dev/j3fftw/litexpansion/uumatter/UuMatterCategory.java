@@ -10,7 +10,7 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.guide.SlimefunGuide;
 import io.github.thebusybiscuit.slimefun4.core.guide.SlimefunGuideMode;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import org.bukkit.ChatColor;
@@ -30,7 +30,7 @@ public final class UuMatterCategory extends FlexItemGroup {
 
     private UuMatterCategory() {
         super(new NamespacedKey(LiteXpansion.getInstance(), "uumatter_category"),
-                CustomItemStack.create(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
+                new CustomItemStack(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
                                 "54d39df0f813b7424406462854eb7249f8c76d80ce56f3af410e35a287062589")),
                         "&5UU-Matter Recipes")
         );
@@ -51,7 +51,7 @@ public final class UuMatterCategory extends FlexItemGroup {
             // Header and back button
             for (int i = 0; i < 9; i++) {
                 if (i == 1) {
-                    menu.addItem(i, CustomItemStack.create(ChestMenuUtils.getBackButton(p, "",
+                    menu.addItem(i, new CustomItemStack(ChestMenuUtils.getBackButton(p, "",
                         ChatColor.GRAY + Slimefun.getLocalization().getMessage(p, "guide.back.guide")), 1)
                     );
                     menu.addMenuClickHandler(i, (pl, s, is, action) -> {
@@ -120,7 +120,7 @@ public final class UuMatterCategory extends FlexItemGroup {
 
         menu.setEmptySlotsClickable(false);
 
-        menu.addItem(1, CustomItemStack.create(ChestMenuUtils.getBackButton(player, "",
+        menu.addItem(1, new CustomItemStack(ChestMenuUtils.getBackButton(player, "",
                 ChatColor.GRAY + Slimefun.getLocalization().getMessage(player, "guide.back.guide")), 1),
             (pl, slot, item, action) -> {
                 SlimefunGuide.openMainMenu(playerProfile, slimefunGuideLayout, 1);

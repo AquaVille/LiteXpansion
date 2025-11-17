@@ -6,7 +6,7 @@ import dev.j3fftw.litexpansion.machine.api.PoweredMachine;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import org.bukkit.Material;
@@ -37,8 +37,8 @@ public class RubberSynthesizer extends AContainer implements RecipeDisplayItem, 
 
     @Override
     protected void registerDefaultRecipes() {
-        registerRecipe(13, new ItemStack[] {CustomItemStack.create(SlimefunItems.OIL_BUCKET.item(), 1)},
-            new ItemStack[] {CustomItemStack.create(Items.RUBBER.item(), 8), new ItemStack(Material.BUCKET)});
+        registerRecipe(13, new ItemStack[] {new CustomItemStack(SlimefunItems.OIL_BUCKET.item(), 1)},
+            new ItemStack[] {new CustomItemStack(Items.RUBBER.item(), 8), new ItemStack(Material.BUCKET)});
     }
 
     @Nonnull

@@ -12,7 +12,7 @@ import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.blocks.BlockPosition;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
@@ -44,7 +44,7 @@ public class MassFabricator extends SlimefunItem implements InventoryBlock, Ener
 
     private static final Map<BlockPosition, Integer> progress = new HashMap<>();
 
-    private static final ItemStack progressItem = CustomItemStack.create(Items.UU_MATTER.item(), "&7Progress");
+    private static final ItemStack progressItem = new CustomItemStack(Items.UU_MATTER.item(), "&7Progress");
 
     private static final ItemStack plate = SlimefunItems.REINFORCED_PLATE.item();
     private static final ItemStack circuitBoard = SlimefunItems.ADVANCED_CIRCUIT_BOARD.item();

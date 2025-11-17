@@ -12,7 +12,7 @@ import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.blocks.BlockPosition;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
@@ -45,7 +45,7 @@ public class Recycler extends SlimefunItem implements InventoryBlock, EnergyNetC
 
     private static final Map<BlockPosition, Integer> progress = new HashMap<>();
 
-    private static final ItemStack progressItem = CustomItemStack.create(Material.DEAD_BUSH, "&7Progress");
+    private static final ItemStack progressItem = new CustomItemStack(Material.DEAD_BUSH, "&7Progress");
 
     public Recycler() {
         super(Items.LITEXPANSION, Items.RECYCLER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
@@ -74,7 +74,7 @@ public class Recycler extends SlimefunItem implements InventoryBlock, EnergyNetC
                 blockMenuPreset.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
             }
             Utils.putOutputSlot(blockMenuPreset, OUTPUT_SLOT);
-            blockMenuPreset.addItem(PROGRESS_SLOT, CustomItemStack.create(Material.DEAD_BUSH, "&7Progress"));
+            blockMenuPreset.addItem(PROGRESS_SLOT, new CustomItemStack(Material.DEAD_BUSH, "&7Progress"));
             blockMenuPreset.addMenuClickHandler(PROGRESS_SLOT, ChestMenuUtils.getEmptyClickHandler());
         });
     }

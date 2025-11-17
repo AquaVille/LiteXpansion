@@ -30,7 +30,7 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
 import io.github.thebusybiscuit.slimefun4.implementation.items.multiblocks.OreCrusher;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -235,7 +235,7 @@ final class ItemSetup {
     }
 
     private void registerEndgameItems() {
-        registerNonPlaceableItem(Items.SCRAP, Recycler.RECIPE_TYPE, CustomItemStack.create(Material.COBBLESTONE,
+        registerNonPlaceableItem(Items.SCRAP, Recycler.RECIPE_TYPE, new CustomItemStack(Material.COBBLESTONE,
             "&7Any Item!"));
         new DyeItem(Items.LITEXPANSION, Items.UU_MATTER, MassFabricator.RECIPE_TYPE,
             createSingleItemRecipeCentered(Items.SCRAP.item())).register(plugin);

@@ -2,8 +2,8 @@ package dev.j3fftw.litexpansion.utils;
 
 import dev.j3fftw.extrautils.utils.Utils;
 import dev.j3fftw.litexpansion.machine.UUCrafter;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
@@ -51,7 +51,7 @@ public class BlockMenuPresetTest extends BlockMenuPreset {
         Utils.putOutputSlot(this, UUCrafter.OUTPUT_SLOT);
 
         addItem(UUCrafter.START_STOP,
-            CustomItemStack.create(
+            new CustomItemStack(
                 Material.RED_STAINED_GLASS_PANE,
                 "&7Click to start"
             )

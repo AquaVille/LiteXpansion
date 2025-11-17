@@ -4,13 +4,13 @@ import com.google.common.base.Preconditions;
 import dev.j3fftw.extrautils.interfaces.InventoryBlock;
 import dev.j3fftw.extrautils.utils.Utils;
 import dev.j3fftw.litexpansion.Items;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetProvider;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -42,7 +42,7 @@ public class AdvancedSolarPanel extends SlimefunItem implements InventoryBlock, 
     public static final int ULTIMATE_OUTPUT = 5120;
     public static final int ULTIMATE_STORAGE = 10_000_000;
     private static final int PROGRESS_SLOT = 4;
-    private static final ItemStack generatingItem = CustomItemStack.create(Material.ORANGE_STAINED_GLASS_PANE,
+    private static final ItemStack generatingItem = new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE,
         "&cNot Generating..."
     );
     private final Type type;
@@ -86,13 +86,13 @@ public class AdvancedSolarPanel extends SlimefunItem implements InventoryBlock, 
 
         if (inv.toInventory() != null && !inv.toInventory().getViewers().isEmpty()) {
             inv.replaceExistingItem(PROGRESS_SLOT,
-                canGenerate ? CustomItemStack.create(Material.GREEN_STAINED_GLASS_PANE, "&aGenerating",
+                canGenerate ? new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&aGenerating",
                     "", "&bRate: " + generationType,
                     "&7Generating at &6" + Utils.powerFormatAndFadeDecimals(Utils.perTickToPerSecond(rate)) + " J/s " +
                         "&8(" + rate + " J/t)",
                     "", "&7Stored: &6" + Utils.powerFormatAndFadeDecimals((double) stored + rate) + " J"
                 )
-                    : CustomItemStack.create(Material.ORANGE_STAINED_GLASS_PANE, "&cNot Generating",
+                    : new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&cNot Generating",
                     "", "&7Generator has reached maximum capacity.",
                     "", "&7Stored: &6" + Utils.powerFormatAndFadeDecimals(stored) + " J")
             );

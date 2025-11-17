@@ -6,12 +6,12 @@ import dev.j3fftw.litexpansion.machine.Recycler;
 import dev.j3fftw.litexpansion.machine.RubberSynthesizer;
 import dev.j3fftw.litexpansion.machine.generators.AdvancedSolarPanel;
 import dev.j3fftw.litexpansion.weapons.NanoBlade;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.bakedlibs.dough.skins.PlayerHead;
 import io.github.bakedlibs.dough.skins.PlayerSkin;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -25,7 +25,7 @@ public final class Items {
         new NamespacedKey(LiteXpansion.getInstance(),
             "litexpansion"
         ),
-        CustomItemStack.create(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
+        new CustomItemStack(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
             "3f87fc5cbb233743a82fb0fa51fe739487f29bcc01c9026621ecefad197f4fb1")),
             "&7LiteXpansion"
         )
@@ -153,7 +153,7 @@ public final class Items {
 
     public static final SlimefunItemStack THORIUM = new SlimefunItemStack(
         "THORIUM",
-        CustomItemStack.create(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
+        new CustomItemStack(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
             "b87403257c0eaa518cf186deccde137d476556ccff146d503fb2e73956582f37")),
             "Thorium"
         ),
@@ -474,7 +474,7 @@ public final class Items {
 
     public static final SlimefunItemStack FOOD_SYNTHESIZER = new SlimefunItemStack(
         "FOOD_SYNTHESIZER",
-        CustomItemStack.create(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
+        new CustomItemStack(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
             "a967efe969d264f635f2c201c34381ef59c72e16ec50af7692033121e22fba9c")),
             "Food Synthesizer"),
         "&dFood Synthesizer",

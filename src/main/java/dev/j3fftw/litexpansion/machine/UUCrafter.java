@@ -10,7 +10,7 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
@@ -37,11 +37,11 @@ public class UUCrafter extends SlimefunItem implements InventoryBlock, EnergyNet
     public static final int OUTPUT_SLOT = 25;
     public static final int[] CRAFTING_SLOTS = {12, 13, 14, 21, 22, 23, 30, 31, 32};
     public static final int START_STOP = 40;
-    public static final ItemStack RUNNING = CustomItemStack.create(
+    public static final ItemStack RUNNING = new CustomItemStack(
         Material.GREEN_STAINED_GLASS_PANE, ChatColor.GRAY + "Click to stop"
     );
 
-    public static final ItemStack NOT_RUNNING = CustomItemStack.create(
+    public static final ItemStack NOT_RUNNING = new CustomItemStack(
         Material.RED_STAINED_GLASS_PANE, ChatColor.GRAY + "Click to start"
     );
 
