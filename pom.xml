@@ -6,7 +6,7 @@
 
     <groupId>dev.j3fftw</groupId>
     <artifactId>LiteXpansion</artifactId>
-    <version>MODIFIED</version>
+    <version>AQUAVILLE</version>
 
     <repositories>
         <repository>
@@ -101,7 +101,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.6.1</version>
                 <executions>
                     <execution>
                         <goals>
@@ -111,6 +111,7 @@
                 </executions>
 
                 <configuration>
+                    <minimizeJar>true</minimizeJar>
                     <relocations>
                          <relocation>
                             <pattern>dev.j3fftw.extrautils</pattern>
@@ -124,6 +125,15 @@
                         </relocation>
                         <!-- Temporary fix for Dough skin issue (November 2025) : END -->
                     </relocations>
+
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>META-INF/*</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
                 </configuration>
             </plugin>
         </plugins>
