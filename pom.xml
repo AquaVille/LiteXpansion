@@ -6,7 +6,7 @@
 
     <groupId>dev.j3fftw</groupId>
     <artifactId>LiteXpansion</artifactId>
-    <version>AQUAVILLE</version>
+    <version>26.1-AQUAVILLE</version>
 
     <repositories>
         <repository>
@@ -23,12 +23,12 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.21.10-R0.1-SNAPSHOT</version>
+            <version>26.1.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
-            <groupId>com.github.SlimeFun-Lab</groupId>
+            <groupId>com.github.AquaVille</groupId>
             <artifactId>Slimefun4</artifactId>
             <version>experimental-SNAPSHOT</version>
             <scope>provided</scope>
@@ -52,7 +52,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.42</version>
+            <version>1.18.46</version>
             <scope>provided</scope>
         </dependency>
 
@@ -91,10 +91,19 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>3.13.0</version>
+
                 <configuration>
-                    <source>16</source>
-                    <target>16</target>
+                    <source>21</source>
+                    <target>21</target>
+
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.46</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
 
