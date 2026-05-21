@@ -2,7 +2,6 @@ package dev.j3fftw.litexpansion.machine;
 
 import dev.j3fftw.litexpansion.Items;
 import dev.j3fftw.litexpansion.machine.api.PoweredMachine;
-import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
@@ -27,11 +26,8 @@ public class Converter extends AContainer implements PoweredMachine {
 
     @Override
     protected void registerDefaultRecipes() {
-        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_17)) {
-            addRecipe(new ItemStack(Material.COPPER_INGOT), SlimefunItems.COPPER_INGOT.item());
-            addRecipe(SlimefunItems.COPPER_INGOT.item(), new ItemStack(Material.COPPER_INGOT));
-        }
-
+        addRecipe(new ItemStack(Material.COPPER_INGOT), SlimefunItems.COPPER_INGOT.item());
+        addRecipe(SlimefunItems.COPPER_INGOT.item(), new ItemStack(Material.COPPER_INGOT));
         addRecipe(new ItemStack(Material.GOLD_INGOT), new ItemStack(SlimefunItems.GOLD_4K.item()));
         addRecipe(new ItemStack(SlimefunItems.GOLD_4K.item()), new ItemStack(Material.GOLD_INGOT));
         addRecipe(new ItemStack(SlimefunItems.GOLD_6K.item()), new ItemStack(Material.GOLD_INGOT));

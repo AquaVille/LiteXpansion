@@ -2,7 +2,6 @@ package dev.j3fftw.litexpansion.machine;
 
 import dev.j3fftw.litexpansion.Items;
 import dev.j3fftw.litexpansion.machine.api.PoweredMachine;
-import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
@@ -55,11 +54,8 @@ public class Macerator extends AContainer implements PoweredMachine {
         addRecipe(new ItemStack(Material.DIAMOND_ORE), new CustomItemStack(Items.DIAMOND_DUST.item(), 2));
         addRecipe(new ItemStack(Material.EMERALD_ORE), new CustomItemStack(Items.EMERALD_DUST.item(), 2));
         addRecipe(new ItemStack(Material.NETHER_QUARTZ_ORE), new CustomItemStack(Items.QUARTZ_DUST.item(), 2));
-
-        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_16)) {
-            addRecipe(new ItemStack(Material.NETHER_GOLD_ORE), new CustomItemStack(SlimefunItems.GOLD_DUST.item(), 2));
-            addRecipe(new ItemStack(Material.ANCIENT_DEBRIS), new CustomItemStack(Items.ANCIENT_DEBRIS_DUST.item(), 2));
-        }
+        addRecipe(new ItemStack(Material.NETHER_GOLD_ORE), new CustomItemStack(SlimefunItems.GOLD_DUST.item(), 2));
+        addRecipe(new ItemStack(Material.ANCIENT_DEBRIS), new CustomItemStack(Items.ANCIENT_DEBRIS_DUST.item(), 2));
 
         for (Material mat : Tag.WOOL.getValues()) {
             addRecipe(new ItemStack(mat), new ItemStack(Material.STRING, 4));
